@@ -1,0 +1,15 @@
+<div class="ng-presentation">
+    <div class="ng-presentation-slide" ng-repeat="slide in slides"
+         ng-show="slide.visible" ng-style="{background: slide.background}">
+        <div class="ng-presentation-slide-content">
+            <h2>{{slide.title}}</h2>
+            <div>{{slide.content}}</div>
+        </div>
+    </div>
+    <div>
+        <a class="ng-presentation-ctrl-fullscreen" href="#" ng-click="fullscreen()">{{isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}}</a>
+        <a class="ng-presentation-ctrl-prev" href="#" ng-click="prev()">Prev</a>
+        <a class="ng-presentation-ctrl-play" href="#" ng-click="play()">{{isPaused ? 'Play' : 'Paused'}}</a>
+        <a class="ng-presentation-ctrl-next" href="#" ng-click="next()">Next</a>
+    </div>
+</div>
