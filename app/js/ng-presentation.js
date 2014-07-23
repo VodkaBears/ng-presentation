@@ -3,7 +3,7 @@
 
     var app = angular.module('ngPresentation', ['ngAnimate']);
 
-    app.directive('ngPresentation', function ($interval) {
+    app.directive('ngPresentation', function ($document, $interval) {
         return {
             restrict: 'AE',
             replace: true,
@@ -16,16 +16,38 @@
                 scope.isPaused = true;
                 scope.isFullscreen = false;
 
+                /**
+                 * Check full screen mode and update scope value
+                 * @param e - event
+                 */
+                var checkFullscreen = function (e) {
+                    var isReallyFullScreen = !!(document.fullScreen || document.mozFullScreen ||
+                        document.webkitIsFullScreen || document.msFullscreenElement);
+
+                    scope.$apply(function () {
+                        scope.isFullscreen = isReallyFullScreen;
+                    });
+                };
+
+                /**
+                 * Next slide
+                 */
                 scope.next = function () {
                     scope.currentIndex < scope.slides.length - 1 ?
                         scope.currentIndex++ : scope.currentIndex = 0;
                 };
 
+                /**
+                 * Previous slide
+                 */
                 scope.prev = function () {
                     scope.currentIndex > 0 ?
                         scope.currentIndex-- : scope.currentIndex = scope.slides.length - 1;
                 };
 
+                /**
+                 * Play/pause
+                 */
                 scope.play = function () {
                     if (scope.isPaused) {
                         interval = $interval(function () {
@@ -38,12 +60,17 @@
                     scope.isPaused = !scope.isPaused;
                 };
 
+                /**
+                 * Go to the full screen mode/ exit from the full screen mode
+                 */
                 scope.fullscreen = function () {
-                    var elem = element[0];
+                    var elem = element[0],
+                        isFullScreen = !!(document.fullscreenElement ||
+                            document.mozFullScreenElement ||
+                            document.webkitFullscreenElement ||
+                            document.msFullscreenElement);
 
-                    console.log(elem.mozCancelFullScreen);
-
-                    if (!scope.isFullscreen) {
+                    if (!isFullScreen) {
                         if (elem.requestFullscreen) {
                             elem.requestFullscreen();
                         } else if (elem.mozRequestFullScreen) {
@@ -62,14 +89,18 @@
                             document.webkitExitFullscreen();
                         }
                     }
-
-                    scope.isFullscreen = !scope.isFullscreen;
                 };
+
+                $document.bind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
+                    checkFullscreen);
 
                 scope.$on('$destroy', function() {
                     if (interval) {
                         $interval.cancel(interval);
                     }
+
+                    $document.unbind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
+                        checkFullscreen);
                 });
 
                 scope.$watch('currentIndex', function (newIndex, oldIndex) {
