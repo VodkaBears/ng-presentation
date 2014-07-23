@@ -3,7 +3,29 @@
 
     var app = angular.module('ngPresentation', ['ngAnimate']);
 
-    app.directive('ngPresentation', function ($document, $interval) {
+    app.directive('ngPresentation', function ($document, $timeout) {
+        var currentScope;
+
+        /**
+         * Add keyboard control to the focused(last used) presentation
+         */
+        $document.on('keydown', function (e) {
+            if (!currentScope) {
+                return;
+            }
+
+            var keyCode = e.keyCode;
+            if (keyCode === 37) {
+                currentScope.$apply(function () {
+                    currentScope.prev();
+                });
+            } else if (keyCode === 39) {
+                currentScope.$apply(function () {
+                    currentScope.next();
+                });
+            }
+        });
+
         return {
             restrict: 'AE',
             replace: true,
@@ -11,23 +33,12 @@
                 slides: '='
             },
             link: function(scope, element, attrs) {
-                var interval;
+                var timeout;
                 scope.currentIndex = 0;
                 scope.isPaused = true;
                 scope.isFullscreen = false;
 
-                /**
-                 * Check full screen mode and update scope value
-                 * @param e - event
-                 */
-                var checkFullscreen = function (e) {
-                    var isReallyFullScreen = !!(document.fullScreen || document.mozFullScreen ||
-                        document.webkitIsFullScreen || document.msFullscreenElement);
-
-                    scope.$apply(function () {
-                        scope.isFullscreen = isReallyFullScreen;
-                    });
-                };
+                currentScope = scope;
 
                 /**
                  * Next slide
@@ -35,6 +46,14 @@
                 scope.next = function () {
                     scope.currentIndex < scope.slides.length - 1 ?
                         scope.currentIndex++ : scope.currentIndex = 0;
+
+                    // Reset timer time
+                    if (!scope.isPaused) {
+                        $timeout.cancel(timeout);
+                        timeout = $timeout(function () {
+                            scope.next();
+                        }, 3000);
+                    }
                 };
 
                 /**
@@ -50,11 +69,11 @@
                  */
                 scope.play = function () {
                     if (scope.isPaused) {
-                        interval = $interval(function () {
+                        timeout = $timeout(function () {
                             scope.next();
                         }, 3000);
                     } else {
-                        $interval.cancel(interval);
+                        $timeout.cancel(timeout);
                     }
 
                     scope.isPaused = !scope.isPaused;
@@ -91,22 +110,51 @@
                     }
                 };
 
-                $document.bind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
-                    checkFullscreen);
-
-                scope.$on('$destroy', function() {
-                    if (interval) {
-                        $interval.cancel(interval);
-                    }
-
-                    $document.unbind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
-                        checkFullscreen);
-                });
-
+                /**
+                 * Look for the currentIndex to hide/show slides
+                 */
                 scope.$watch('currentIndex', function (newIndex, oldIndex) {
                     scope.slides[oldIndex].visible = false;
                     scope.slides[newIndex].visible = true;
                 });
+
+                /**
+                 * Check full screen mode and update scope value
+                 * @param e - event
+                 */
+                var checkFullscreen = function (e) {
+                    var isReallyFullScreen = !!(document.fullScreen || document.mozFullScreen ||
+                        document.webkitIsFullScreen || document.msFullscreenElement);
+
+                    scope.$apply(function () {
+                        scope.isFullscreen = isReallyFullScreen;
+                    });
+                };
+                $document.bind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
+                    checkFullscreen);
+
+                /**
+                 * Focus element on click
+                 */
+                var focusElement = function () {
+                    currentScope = scope;
+                };
+                element.on('click', focusElement);
+
+                /**
+                 * Destroy directive
+                 */
+                scope.$on('$destroy', function() {
+                    if (timeout) {
+                        $timeout.cancel(timeout);
+                    }
+
+                    $document.unbind('fullscreenchange mozfullscreenchange webkitfullscreenchange msfullscreenchange',
+                        checkFullscreen);
+
+                    element.unbind('click', focusElement);
+                });
+
             },
             templateUrl: 'templates/ng-presentation.html'
         };
