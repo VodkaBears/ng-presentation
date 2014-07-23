@@ -6,10 +6,10 @@
             <div>{{slide.content}}</div>
         </div>
     </div>
-    <div>
-        <a class="ng-presentation-ctrl-fullscreen" href="#" ng-click="fullscreen()">{{isFullscreen ? 'Exit fullscreen' : 'Fullscreen'}}</a>
-        <a class="ng-presentation-ctrl-prev" href="#" ng-click="prev()">Prev</a>
-        <a class="ng-presentation-ctrl-play" href="#" ng-click="play()">{{isPaused ? 'Play' : 'Paused'}}</a>
-        <a class="ng-presentation-ctrl-next" href="#" ng-click="next()">Next</a>
+    <div class="ng-presentation-ctrls">
+        <a class="ng-presentation-ctrls-fullscreen" href="#" ng-click="fullscreen()"><i class="ng-presentation-icon-resize-full"></i></a>
+        <a class="ng-presentation-ctrls-prev" href="#" ng-click="prev()"><i class="ng-presentation-icon-left-big"></i></a>
+        <a class="ng-presentation-ctrls-play" href="#" ng-click="play()"><i class="ng-presentation-icon-play"></i></a>
+        <a class="ng-presentation-ctrls-next" href="#" ng-click="next()"><i class="ng-presentation-icon-right-big"></i></a>
     </div>
 </div>

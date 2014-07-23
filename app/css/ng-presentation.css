@@ -1,10 +1,51 @@
-@import url(http://fonts.googleapis.com/css?family=Exo+2:400,700&subset=latin,cyrillic);
-
 /* Set custom fonts */
+
+@import url(http://fonts.googleapis.com/css?family=Exo+2:400,700&subset=latin,cyrillic);
 
 .ng-presentation * {
     font-family: 'Exo 2', sans-serif;
 }
+
+/* Set icon fonts */
+
+@font-face {
+    font-family: 'ngPresentation';
+    src: url('../font/ngPresentation.eot?46774664');
+    src: url('../font/ngPresentation.eot?46774664#iefix') format('embedded-opentype'),
+    url('../font/ngPresentation.woff?46774664') format('woff'),
+    url('../font/ngPresentation.ttf?46774664') format('truetype'),
+    url('../font/ngPresentation.svg?46774664#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="ng-presentation-icon-"]:before, [class*=" ng-presentation-icon-"]:before {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+
+    font-family: 'ngPresentation';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-align: center;
+    text-decoration: inherit;
+    text-transform: none;
+    speak: none;
+    line-height: 32px;
+    color: #fff;
+    background: #000;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    background-clip: padding-box;
+}
+
+.ng-presentation-icon-resize-full:before { content: '\e800'; } /* '' */
+.ng-presentation-icon-play:before { content: '\e801'; } /* '' */
+.ng-presentation-icon-left-big:before { content: '\e802'; } /* '' */
+.ng-presentation-icon-pause:before { content: '\e803'; } /* '' */
+.ng-presentation-icon-right-big:before { content: '\e804'; } /* '' */
+.ng-presentation-icon-resize-small:before { content: '\e805'; } /* '' */
 
 /* Root element - presentation container */
 
@@ -73,31 +114,47 @@
 
 /* Controls */
 
-.ng-presentation-ctrl-fullscreen,
-.ng-presentation-ctrl-play,
-.ng-presentation-ctrl-pause,
-.ng-presentation-ctrl-next,
-.ng-presentation-ctrl-prev {
+[class^="ng-presentation-ctrls-"] {
     position: absolute;
+
+    outline: 0;
+    opacity: 0.1;
+    -webkit-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
 }
 
-.ng-presentation-ctrl-next {
-    bottom: 10px;
-    right: 10px;
+.ng-presentation-ctrls:hover [class^="ng-presentation-ctrls-"] {
+    opacity: 0.3;
 }
 
-.ng-presentation-ctrl-play,
-.ng-presentation-ctrl-pause {
-    bottom: 10px;
-    right: 60px;
+.ng-presentation-ctrls-next {
+    bottom: 5px;
+    right: 5px;
+}
+.ng-presentation-ctrls-next > [class^="ng-presentation-icon-"]:before {
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
 }
 
-.ng-presentation-ctrl-prev {
-    bottom: 10px;
-    right: 120px;
+.ng-presentation-ctrls-play {
+    bottom: 5px;
+    right: 37px;
+}
+.ng-presentation-ctrls-play > [class^="ng-presentation-icon-"]:before {
+    -webkit-border-radius: 0;
+    border-radius: 0;
 }
 
-.ng-presentation-ctrl-fullscreen {
-    top: 10px;
-    left: 10px;
+.ng-presentation-ctrls-prev {
+    bottom: 5px;
+    right: 69px;
+}
+.ng-presentation-ctrls-prev > [class^="ng-presentation-icon-"]:before {
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+}
+
+.ng-presentation-ctrls-fullscreen {
+    top: 5px;
+    left: 5px;
 }
