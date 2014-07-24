@@ -1,7 +1,7 @@
 (function (angular) {
     'use strict';
 
-    var app = angular.module('ngPresentation', ['ngAnimate']);
+    var app = angular.module('ngPresentation', []);
 
     app.directive('ngPresentation', function ($document, $sce, $timeout) {
         var currentScope;
