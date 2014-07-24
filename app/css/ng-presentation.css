@@ -98,17 +98,12 @@
     /* max-width: calc(100% - 0.25em) /* Only for IE9+ */
 }
 
-.ng-presentation-slide-content h1,
-.ng-presentation-slide-content h2,
-.ng-presentation-slide-content h3,
-.ng-presentation-slide-content h4,
-.ng-presentation-slide-content h5,
-.ng-presentation-slide-content h6 {
+.ng-presentation-slide-content-title  {
     margin: 0 0 40px 0;
     font-size: 50px;
 }
 
-.ng-presentation-slide-content div {
+.ng-presentation-slide-content-html {
     font-size: 30px;
 }
 
