@@ -21,8 +21,6 @@
 
 [class^="ng-presentation-icon-"]:before, [class*=" ng-presentation-icon-"]:before {
     display: inline-block;
-    width: 32px;
-    height: 32px;
 
     font-family: 'ngPresentation';
     font-style: normal;
@@ -32,12 +30,6 @@
     text-decoration: inherit;
     text-transform: none;
     speak: none;
-    line-height: 32px;
-    color: #fff;
-    background: #000;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
-    background-clip: padding-box;
 }
 
 .ng-presentation-icon-resize-full:before { content: '\e800'; } /* '' */
@@ -112,10 +104,20 @@
 [class^="ng-presentation-ctrls-"] {
     position: absolute;
 
+    width: 32px;
+    height: 32px;
+
+    text-align: center;
+    line-height: 32px;
     outline: 0;
     opacity: 0.1;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     -webkit-transition: all 0.2s ease-out;
     transition: all 0.2s ease-out;
+    color: #fff;
+    background: #000;
+    background-clip: padding-box;
 }
 
 .ng-presentation-ctrls:hover [class^="ng-presentation-ctrls-"] {
@@ -126,7 +128,7 @@
     bottom: 5px;
     right: 5px;
 }
-.ng-presentation-ctrls-next > [class^="ng-presentation-icon-"]:before {
+.ng-presentation-ctrls-next {
     -webkit-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
 }
@@ -135,7 +137,7 @@
     bottom: 5px;
     right: 37px;
 }
-.ng-presentation-ctrls-play > [class^="ng-presentation-icon-"]:before {
+.ng-presentation-ctrls-play {
     -webkit-border-radius: 0;
     border-radius: 0;
 }
@@ -144,12 +146,17 @@
     bottom: 5px;
     right: 69px;
 }
-.ng-presentation-ctrls-prev > [class^="ng-presentation-icon-"]:before {
+.ng-presentation-ctrls-prev {
     -webkit-border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px;
 }
 
 .ng-presentation-ctrls-fullscreen {
     top: 5px;
+    left: 5px;
+}
+
+.ng-presentation-ctrls-number {
+    bottom: 5px;
     left: 5px;
 }
