@@ -35,7 +35,7 @@
             },
             link: function(scope, element, attrs) {
                 var timeout,
-                    playbackDelay = scope.playbackDelay ? parseInt(scope.playbackDelay) : 3000;
+                    playbackDelay = scope.playbackDelay ? parseInt(scope.playbackDelay) : 6000;
                 scope.currentIndex = 0;
                 scope.isPaused = true;
                 scope.isFullscreen = false;
