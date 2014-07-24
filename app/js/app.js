@@ -20,7 +20,7 @@
         }, {
             title: 'Slide 4',
             content: 'This is slide №4',
-            style: {'background': '#3498db'}
+            style: {'background': '#3498db'},
             class: ''
         }, {
             title: 'Slide 5',
