@@ -94,7 +94,7 @@
 /* Content */
 
 .ng-presentation-slide-content {
-    max-width: 98%; /* Prevents issues with long content causes the content block to be pushed to the top */
+    max-width: 80%; /* Prevents issues with long content causes the content block to be pushed to the top */
     /* max-width: calc(100% - 0.25em) /* Only for IE9+ */
 }
 
@@ -157,9 +157,4 @@
 .ng-presentation-ctrls-fullscreen {
     top: 5px;
     left: 5px;
-}
-
-.newbee {
-    font-size: 10px;
-    background: #105cb6;
 }
