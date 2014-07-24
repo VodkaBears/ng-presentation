@@ -3,7 +3,7 @@
 
     var app = angular.module('ngPresentation', ['ngAnimate']);
 
-    app.directive('ngPresentation', function ($document, $timeout) {
+    app.directive('ngPresentation', function ($document, $sce, $timeout) {
         var currentScope;
 
         /**
@@ -40,6 +40,11 @@
                 scope.isPaused = true;
                 scope.isFullscreen = false;
                 currentScope = scope;
+
+                // Pass html to the template
+                scope.slides.forEach(function (slide) {
+                    slide.content = $sce.trustAsHtml(slide.content);
+                });
 
                 /**
                  * Next slide

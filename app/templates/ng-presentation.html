@@ -3,7 +3,7 @@
          ng-show="slide.visible" ng-class="slide.class" ng-style="slide.style">
         <div class="ng-presentation-slide-content">
             <h2>{{slide.title}}</h2>
-            <div>{{slide.content}}</div>
+            <div ng-bind-html="slide.content"></div>
         </div>
     </div>
     <div class="ng-presentation-ctrls">
