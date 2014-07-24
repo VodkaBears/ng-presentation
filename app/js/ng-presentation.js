@@ -30,14 +30,15 @@
             restrict: 'AE',
             replace: true,
             scope: {
-                slides: '='
+                slides: '=',
+                playbackDelay: '@playbackdelay'
             },
             link: function(scope, element, attrs) {
-                var timeout;
+                var timeout,
+                    playbackDelay = scope.playbackDelay ? parseInt(scope.playbackDelay) : 3000;
                 scope.currentIndex = 0;
                 scope.isPaused = true;
                 scope.isFullscreen = false;
-
                 currentScope = scope;
 
                 /**
@@ -52,7 +53,7 @@
                         $timeout.cancel(timeout);
                         timeout = $timeout(function () {
                             scope.next();
-                        }, 3000);
+                        }, playbackDelay);
                     }
                 };
 
@@ -71,7 +72,7 @@
                     if (scope.isPaused) {
                         timeout = $timeout(function () {
                             scope.next();
-                        }, 3000);
+                        }, playbackDelay);
                     } else {
                         $timeout.cancel(timeout);
                     }

@@ -1,6 +1,6 @@
 <div class="ng-presentation">
     <div class="ng-presentation-slide" ng-repeat="slide in slides"
-         ng-show="slide.visible" ng-style="slide.style">
+         ng-show="slide.visible" ng-class="slide.class" ng-style="slide.style">
         <div class="ng-presentation-slide-content">
             <h2>{{slide.title}}</h2>
             <div>{{slide.content}}</div>
