@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="ng-presentation-ctrls">
-        <a class="ng-presentation-ctrls-fullscreen" ng-click="fullscreen()"><i class="{{isFullscreen ? 'ng-presentation-icon-resize-small': 'ng-presentation-icon-resize-full'}}"></i></a>
+        <a class="ng-presentation-ctrls-fullscreen" ng-show="isFullscreenAvailable" ng-click="fullscreen()"><i class="{{isFullscreen ? 'ng-presentation-icon-resize-small': 'ng-presentation-icon-resize-full'}}"></i></a>
         <a class="ng-presentation-ctrls-prev" ng-click="prev()"><i class="ng-presentation-icon-left-big"></i></a>
         <a class="ng-presentation-ctrls-play" ng-click="play()"><i class="{{isPaused ? 'ng-presentation-icon-play' : 'ng-presentation-icon-pause'}}"></i></a>
         <a class="ng-presentation-ctrls-next" ng-click="next()"><i class="ng-presentation-icon-right-big"></i></a>

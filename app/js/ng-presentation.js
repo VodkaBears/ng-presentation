@@ -41,6 +41,12 @@
                 scope.isFullscreen = false;
                 currentScope = scope;
 
+                // Check full screen support
+                scope.isFullscreenAvailable = !!(document.fullscreenEnabled ||
+                    document.mozFullScreenEnabled ||
+                    document.webkitFullscreenEnabled ||
+                    document.msFullscreenEnabled);
+
                 // Pass html to the template
                 scope.slides.forEach(function (slide) {
                     slide.content = $sce.trustAsHtml(slide.content);
@@ -98,6 +104,8 @@
                     if (!isFullScreen) {
                         if (elem.requestFullscreen) {
                             elem.requestFullscreen();
+                        } else if (elem.msRequestFullscreen) {
+                            elem.msRequestFullscreen();
                         } else if (elem.mozRequestFullScreen) {
                             elem.mozRequestFullScreen();
                         } else if (elem.webkitRequestFullscreen) {
