@@ -1,0 +1,8 @@
+{
+  "name": "ng-presentation",
+  "description": "Angular presentation",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x"
+  }
+}

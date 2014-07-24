@@ -1,10 +1,7 @@
 {
   "name": "ng-presentation",
   "private": true,
-  "version": "0.0.0",
   "description": "Angular presentations",
-  "repository": "https://github.com/vodkabears/ng-presentation",
-  "license": "MIT",
   "devDependencies": {
     "karma": "~0.10",
     "protractor": "~0.20.1",
