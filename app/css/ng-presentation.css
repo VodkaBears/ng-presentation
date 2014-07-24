@@ -120,6 +120,10 @@
     background-clip: padding-box;
 }
 
+.ng-presentation-ctrls a {
+    cursor: pointer;
+}
+
 .ng-presentation-ctrls:hover [class^="ng-presentation-ctrls-"] {
     opacity: 0.3;
 }
