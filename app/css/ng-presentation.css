@@ -51,7 +51,12 @@
 
 /* Webkit full screen mode fix */
 
-:-webkit-full-screen .ng-presentation {
+.ng-presentation:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.ng-presentation-slide:-webkit-full-screen {
     width: 100%;
     height: 100%;
 }
