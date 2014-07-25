@@ -137,8 +137,10 @@
                  * @param e - event
                  */
                 var checkFullscreen = function (e) {
-                    var isReallyFullScreen = !!(document.fullScreen || document.mozFullScreen ||
-                        document.webkitIsFullScreen || document.msFullscreenElement);
+                    var isReallyFullScreen = !!(document.fullscreenElement ||
+                        document.mozFullScreenElement ||
+                        document.webkitFullscreenElement ||
+                        document.msFullscreenElement);
 
                     scope.$apply(function () {
                         scope.isFullscreen = isReallyFullScreen;
