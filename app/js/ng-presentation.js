@@ -33,7 +33,7 @@
                 slides: '=',
                 playbackDelay: '@playbackdelay'
             },
-            link: function(scope, element, attrs) {
+            link: function (scope, element, attrs) {
                 var timeout,
                     playbackDelay = scope.playbackDelay ? parseInt(scope.playbackDelay) : 6000;
                 scope.currentIndex = 0;
@@ -160,7 +160,7 @@
                 /**
                  * Destroy directive
                  */
-                scope.$on('$destroy', function() {
+                scope.$on('$destroy', function () {
                     if (timeout) {
                         $timeout.cancel(timeout);
                     }

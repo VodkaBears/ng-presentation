@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="presentationApp" class="no-js">
+<html lang="en" data-ng-app="presentationApp" class="no-js">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Presentations</title>
     <meta name="description" content="Presentations">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/ng-presentation.css"/>
 </head>
-<body ng-controller="presentationCtrl">
-<div ng-presentation slides="slides"></div>
+<body data-ng-controller="presentationCtrl">
+<div data-ng-presentation data-slides="slides"></div>
 <br><br>
-<div ng-presentation slides="slides2"></div>
+
+<div data-ng-presentation data-slides="slides2"></div>
 
 <script src="js/vendor/angular.min.js"></script>
 <script src="js/ng-presentation.js"></script>

@@ -1,5 +1,4 @@
 /* Set custom fonts */
-
 @import url(http://fonts.googleapis.com/css?family=Exo+2:400,700&subset=latin,cyrillic);
 
 .ng-presentation * {
@@ -32,12 +31,36 @@
     speak: none;
 }
 
-.ng-presentation-icon-resize-full:before { content: '\e800'; } /* '' */
-.ng-presentation-icon-play:before { content: '\e801'; } /* '' */
-.ng-presentation-icon-left-big:before { content: '\e802'; } /* '' */
-.ng-presentation-icon-pause:before { content: '\e803'; } /* '' */
-.ng-presentation-icon-right-big:before { content: '\e804'; } /* '' */
-.ng-presentation-icon-resize-small:before { content: '\e805'; } /* '' */
+.ng-presentation-icon-resize-full:before {
+    content: '\e800';
+}
+
+/* '' */
+.ng-presentation-icon-play:before {
+    content: '\e801';
+}
+
+/* '' */
+.ng-presentation-icon-left-big:before {
+    content: '\e802';
+}
+
+/* '' */
+.ng-presentation-icon-pause:before {
+    content: '\e803';
+}
+
+/* '' */
+.ng-presentation-icon-right-big:before {
+    content: '\e804';
+}
+
+/* '' */
+.ng-presentation-icon-resize-small:before {
+    content: '\e805';
+}
+
+/* '' */
 
 /* Root element - presentation container */
 
@@ -95,7 +118,7 @@
     /* max-width: calc(100% - 0.25em) /* Only for IE9+ */
 }
 
-.ng-presentation-slide-content-title  {
+.ng-presentation-slide-content-title {
     margin: 0 0 40px 0;
     font-size: 50px;
 }
@@ -137,6 +160,7 @@
     bottom: 5px;
     right: 5px;
 }
+
 .ng-presentation-ctrls-next {
     -webkit-border-radius: 0 3px 3px 0;
     border-radius: 0 3px 3px 0;
@@ -146,6 +170,7 @@
     bottom: 5px;
     right: 37px;
 }
+
 .ng-presentation-ctrls-play {
     -webkit-border-radius: 0;
     border-radius: 0;
@@ -155,6 +180,7 @@
     bottom: 5px;
     right: 69px;
 }
+
 .ng-presentation-ctrls-prev {
     -webkit-border-radius: 3px 0 0 3px;
     border-radius: 3px 0 0 3px;

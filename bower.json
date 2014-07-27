@@ -1,11 +1,11 @@
 {
-  "name": "ng-presentation",
-  "description": "Angular presentation",
-  "private": true,
-  "dependencies": {
-    "angular": "1.2.x",
-    "angular-mocks": "~1.2.20",
-    "angular-route": "~1.2.20",
-    "jquery": "~2.1.1"
-  }
+    "name": "ng-presentation",
+    "description": "Angular presentation",
+    "private": true,
+    "dependencies": {
+        "angular": "1.2.x",
+        "angular-mocks": "~1.2.20",
+        "angular-route": "~1.2.20",
+        "jquery": "~2.1.1"
+    }
 }
